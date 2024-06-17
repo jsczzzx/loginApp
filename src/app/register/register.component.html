@@ -1,0 +1,46 @@
+<div>
+    <form class="flex-container" #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+        <h1>Register</h1>
+        <div>
+            <input type="text" placeholder="First Name" name="firstName" ngModel required>
+            <input type="text" placeholder="Last Name" name="lastName" ngModel required>
+        </div>
+        <div class="warning" *ngIf="myForm.submitted && myForm.controls['firstName'].errors?.['required']">
+            <p>First Name shouldn't be void.</p>
+        </div>
+        <div class="warning" *ngIf="myForm.submitted && myForm.controls['lastName'].errors?.['required']">
+            <p>Last Name shouldn't be void.</p>
+        </div>
+        <div>
+            <input type="text" placeholder="Mobile No." name="mobileNo" ngModel required>
+        </div>
+        <div class="warning" *ngIf="myForm.submitted && myForm.controls['mobileNo'].errors?.['required']">
+            <p>Mobile No. shouldn't be void.</p>
+        </div>
+        <div>
+            <input type="email" placeholder="Email Address" name="email" ngModel required email>
+        </div>
+        <div class="warning" *ngIf="myForm.submitted && myForm.controls['email'].errors?.['required']">
+            <p>Email Address shouldn't be void.</p>
+        </div>
+        <div class="warning" *ngIf="myForm.submitted && myForm.controls['email'].errors?.['email']">
+            <p>Email Address is invalid.</p>
+        </div>
+        <div>
+            <input type="password" placeholder="Password" name="password" ngModel required>
+            <input type="password" placeholder="Confirm Password" name="password2" ngModel required>
+        </div>
+        <div class="warning" *ngIf="myForm.submitted && myForm.controls['password'].errors?.['required']">
+            <p>Password shouldn't be void.</p>
+        </div>
+        <div class="warning" *ngIf="myForm.submitted && myForm.controls['password2'].errors?.['required']">
+            <p>Password confirm shouldn't be void.</p>
+        </div>
+        <div class="warning" *ngIf="myForm.submitted && !passwordsMatch(myForm)">
+            <p>Passwords don't match.</p>
+        </div>
+        <div>
+            <button class="register" type="submit">Register</button>
+        </div>
+    </form>
+</div>

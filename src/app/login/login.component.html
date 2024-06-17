@@ -1,0 +1,25 @@
+<div>
+    <form class="flex-container" #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+        <p class="register" (click)="onClickRegister()">Register</p>
+
+        <h1>Login</h1>
+        <div>
+            <input type="email" placeholder="Email Address" name="email" ngModel required email>
+        </div>
+        <div class="warning" *ngIf="myForm.submitted && myForm.controls['email'].errors?.['required']">
+            <p>Email Address shouldn't be void.</p>
+        </div>
+        <div class="warning" *ngIf="myForm.submitted && myForm.controls['email'].errors?.['email']">
+            <p>Email Address is invalid.</p>
+        </div>
+        <div>
+            <input type="password" placeholder="Password" name="password" ngModel required>
+        </div>
+        <div class="warning" *ngIf="myForm.submitted && myForm.controls['password'].errors?.['required']">
+            <p>Password shouldn't be void.</p>
+        </div>
+        <div>
+            <button class="sign-in" type="submit">Login</button>
+        </div>
+    </form>
+</div>
